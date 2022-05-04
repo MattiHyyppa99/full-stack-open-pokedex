@@ -20,7 +20,7 @@ jobs:
         run: echo "not skip"
       - name: testing
         env:
-          MESSAGES: ${{ github.events.commits.*.message }}
+          MESSAGES: ${{ toJSON(github.events.commits.*.message) }}
           JOINED: ${{ join(github.events.commits.*.message) }}
           CONTAINS: ${{ contains(join(github.events.commits.*.message), '#skip') }}
         run: echo "$MESSAGES" "$JOINED" "$CONTAINS"
