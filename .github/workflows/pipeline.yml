@@ -1,7 +1,5 @@
 name: Deployment Pipeline
 
-# Test comment
-
 on:
   push:
     branches:
@@ -47,6 +45,8 @@ jobs:
         uses: rjstone/discord-webhook-notify@v1
         with:
           severity: info
+          text: New version of Pokedex deployed
+          description: "to https://stormy-bastion-03047.herokuapp.com/ by ${{ github.event.pusher.name }}"
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Failed build notification to Discord
         if: failure()
