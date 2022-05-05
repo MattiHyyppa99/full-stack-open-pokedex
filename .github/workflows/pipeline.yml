@@ -1,7 +1,5 @@
 name: Deployment Pipeline
 
-# Testing
-
 on:
   push:
     branches:
@@ -55,6 +53,9 @@ jobs:
         uses: rjstone/discord-webhook-notify@v1
         with:
           severity: error
+          text: Build failed
+          description: commit
+          details: https://github.com/MattiHyyppa99/full-stack-open-pokedex/commit/${{ github.sha }} by ${{ github.event.sender.login }} broke the build :(
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
   tag_release:
     needs: [simple_deployment_pipeline]
