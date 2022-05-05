@@ -40,23 +40,23 @@ jobs:
           healthcheck: https://stormy-bastion-03047.herokuapp.com/health
           checkstring: ok
           rollbackonhealthcheckfailed: true
-      - name: Successful deployment notification to Discord
-        if: success() && github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip')
-        uses: rjstone/discord-webhook-notify@v1
-        with:
-          severity: info
-          text: New version of Pokedex deployed
-          description: "to https://stormy-bastion-03047.herokuapp.com/ by ${{ github.event.pusher.name }}"
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-      - name: Failed build notification to Discord
-        if: failure()
-        uses: rjstone/discord-webhook-notify@v1
-        with:
-          severity: error
-          text: Build failed
-          description: commit
-          details: https://github.com/MattiHyyppa99/full-stack-open-pokedex/commit/${{ github.sha }} by ${{ github.event.sender.login }} broke the build :(
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+#      - name: Successful deployment notification to Discord
+#        if: success() && github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip')
+#        uses: rjstone/discord-webhook-notify@v1
+#        with:
+#          severity: info
+#          text: New version of Pokedex deployed
+#          description: "to https://stormy-bastion-03047.herokuapp.com/ by ${{ github.event.pusher.name }}"
+#          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+#      - name: Failed build notification to Discord
+#        if: failure()
+#        uses: rjstone/discord-webhook-notify@v1
+#        with:
+#          severity: error
+#          text: Build failed
+#          description: commit
+#          details: https://github.com/MattiHyyppa99/full-stack-open-pokedex/commit/${{ github.sha }} by ${{ github.event.sender.login }} broke the build :(
+#          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
   tag_release:
     needs: [simple_deployment_pipeline]
     if: github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip')
