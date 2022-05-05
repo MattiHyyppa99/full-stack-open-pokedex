@@ -15,4 +15,5 @@ jobs:
     steps:
       - name: Check the deployed service URL
         uses: jtalk/url-health-check-action@v2
-        url: https://stormy-bastion-03047.herokuapp.com/
+        with:
+          url: https://stormy-bastion-03047.herokuapp.com/
