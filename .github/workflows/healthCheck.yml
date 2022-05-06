@@ -1,19 +1,16 @@
-name: Periodic healthcheck
-
-on:
-  schedule:
-    - cron: '*/10 * * * *'
-
-#on:
-#  push:
-#    branches:
-#      - master
-
-jobs:
-  health_check:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Check the deployed service URL
-        uses: jtalk/url-health-check-action@v2
-        with:
-          url: https://stormy-bastion-03047.herokuapp.com/
+# The solution for exercise 11.19
+#
+# name: Periodic healthcheck
+#
+# on:
+#   schedule:
+#     - cron: '0 12 * * *'  # Run healthcheck at 12.00 every day
+#
+# jobs:
+#   health_check:
+#     runs-on: ubuntu-20.04
+#     steps:
+#       - name: Check the deployed service URL
+#         uses: jtalk/url-health-check-action@v2
+#         with:
+#           url: https://stormy-bastion-03047.herokuapp.com/
