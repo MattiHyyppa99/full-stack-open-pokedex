@@ -2,7 +2,7 @@ name: Periodic healthcheck
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/10 * * * *'
 
 #on:
 #  push:
